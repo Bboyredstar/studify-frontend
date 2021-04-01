@@ -1,0 +1,27 @@
+.asideWrapper {
+  margin: 0;
+  padding: 0;
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.blured {
+  backdrop-filter: blur(2px);
+}
+
+.childWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 991.98px) {
+  .asideWrapper {
+    display: none;
+  }
+}
