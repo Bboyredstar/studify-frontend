@@ -3,12 +3,12 @@ import { useSelector } from 'react-redux'
 import { Redirect, Route } from 'react-router'
 
 export function AuthRoute({ children, ...rest }) {
-  const { isAuth } = useSelector(state => state.app)
+  const { profile } = useSelector(state => state.auth)
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        isAuth ? (
+        profile ? (
           <Redirect
             to={{
               pathname: '/',

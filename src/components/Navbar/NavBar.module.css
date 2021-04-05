@@ -6,8 +6,57 @@
   transition: opacity 0.2s ease;
 }
 
+.logo:focus {
+  outline: none;
+}
 .logo:hover {
   opacity: 0.8;
   color: var(--success);
   text-decoration: none;
+}
+
+.navContainer:is(div) {
+  width: 100%;
+  margin: 0;
+  justify-content: space-between;
+}
+
+.aithLinksWrapper {
+  display: flex;
+  width: max-content;
+  justify-content: flex-end;
+  align-items: center;
+  width: 80%;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  font-size: 1rem;
+  height: 100%;
+  transition: opacity 0.2s ease;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: var(--white);
+  opacity: 0.8;
+}
+
+.dropdown:is(div) {
+  margin: 0;
+}
+
+.dropdown > a {
+  color: var(--white);
+  font-size: 1rem;
+  padding: 0.5rem;
+  transition: opacity 0.2s ease;
+}
+
+.dropdown > a:hover {
+  color: var(--white);
+  opacity: 0.5;
 }

@@ -28,9 +28,6 @@ export const SignUp = () => {
           <Col>
             <Form validated={false} className={styles.form}>
               <h3 className={styles.formTitle}>Регистрация</h3>
-              <span className={styles.formGoogleLink}>
-                Войти с помощью Google
-              </span>
               <Form.Row>
                 <Col>
                   <Form.Label>Имя</Form.Label>
@@ -48,7 +45,7 @@ export const SignUp = () => {
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                   type='email'
-                  placeholder='Enter email'
+                  placeholder='Email'
                   className={styles.formInput}
                 />
               </Form.Group>
