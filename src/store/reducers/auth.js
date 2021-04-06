@@ -1,4 +1,4 @@
-import { SET_AUTH_ERROR, AUTH, SET_LOGOUT } from '../types'
+import { AUTH, SET_LOGOUT } from '../types'
 
 const initialState = {
   profile: null,
@@ -17,12 +17,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         profile: null,
-      }
-    }
-    case SET_AUTH_ERROR: {
-      return {
-        ...state,
-        authError: action.payload,
       }
     }
     default: {

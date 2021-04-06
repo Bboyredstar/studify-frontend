@@ -30,7 +30,7 @@ export const NavBar = () => {
             </NavLink>
             {user ? (
               <NavDropdown
-                title={user?.profile.name}
+                title={user?.name}
                 id='basic-nav-dropdown'
                 className={styles.dropdown}
               >

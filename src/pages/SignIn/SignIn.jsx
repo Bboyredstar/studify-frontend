@@ -3,28 +3,15 @@ import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
-import { GoogleLogin } from 'react-google-login'
-import { FcGoogle } from 'react-icons/fc'
 import { AssideImage } from '../../components'
+import { emailValidation, passwordValidation } from '../../utils/authValidation'
 import styles from './SignIn.module.css'
-import { auth, setLogin } from '../../store/action'
+import { setLogin } from '../../store/action'
 import image from '../../assets/SignIn.jpg'
 
 export const SignIn = () => {
   const dispatch = useDispatch()
   const history = useHistory()
-  const googleSuccess = async res => {
-    const profile = res?.profileObj
-    const token = res?.tokenId
-    try {
-      dispatch(auth({ profile, token }))
-      history.push('/')
-    } catch (err) {}
-  }
-  const googleFailure = err => {
-    console.log('message: ' + JSON.stringify(err))
-  }
-
   const [form, setForm] = useState({ email: '', password: '' })
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPaswordError] = useState('')
@@ -33,38 +20,25 @@ export const SignIn = () => {
 
   useEffect(() => {
     setIsLoading(false)
-    return () => {
-      setEmailError('')
-      setPaswordError('')
-      setIsLoading(false)
-      setAuthError('')
-    }
   }, [])
-
-  const emailValidation = () => {
-    const regexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-    return regexp.test(form.email)
-  }
-
-  const passwordValidation = () => {
-    return !(form.password.length < 6)
-  }
 
   const onSubmitHandler = e => {
     e.preventDefault()
 
-    if (passwordValidation() && emailValidation()) {
+    if (passwordValidation(form.password) && emailValidation(form.email)) {
       setIsLoading(true)
       setPaswordError('')
       setEmailError('')
       dispatch(setLogin(form, history, setAuthError, setIsLoading))
       return
     }
-    passwordValidation()
+    passwordValidation(form.password)
       ? setPaswordError('')
       : setPaswordError('Пароль должен содержать 6 символов')
 
-    emailValidation() ? setEmailError('') : setEmailError('Некорректный email')
+    emailValidation(form.email)
+      ? setEmailError('')
+      : setEmailError('Некорректный email')
   }
 
   const onChangeHandler = e => {
@@ -86,23 +60,8 @@ export const SignIn = () => {
             >
               <h3 className={styles.formTitle}>Вход</h3>
               {authError && <span className={styles.alert}>{authError}</span>}
-              <span className={styles.formGoogleLink}>
-                Войти с помощью
-                <GoogleLogin
-                  clientId='19490497198-lrum5ne9g16h3cd9tc5po24ifv7kmef0.apps.googleusercontent.com'
-                  render={renderProps => (
-                    <FcGoogle
-                      className={styles.googleLink}
-                      onClick={renderProps.onClick}
-                    />
-                  )}
-                  onSuccess={googleSuccess}
-                  onFailure={googleFailure}
-                  cookiePolicy='single_host_origin'
-                />
-              </span>
               <Form.Group>
-                <Form.Label>Email</Form.Label>
+                <Form.Label className={styles.label}>Email</Form.Label>
                 <Form.Control
                   type='email'
                   id='email'
@@ -115,7 +74,7 @@ export const SignIn = () => {
               </Form.Group>
 
               <Form.Group>
-                <Form.Label>Пароль</Form.Label>
+                <Form.Label className={styles.label}>Пароль</Form.Label>
                 <Form.Control
                   type='password'
                   id='password'

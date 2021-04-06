@@ -1,6 +1,6 @@
-import { SET_AUTH_ERROR, AUTH, SET_LOGOUT } from '../types'
+import { AUTH, SET_LOGOUT } from '../types'
 import { setItem, removeItem } from '../../utils/localStorage'
-import { signIn } from '../../api/index'
+import { signIn, signUp } from '../../api/auth'
 
 export const auth = (profile) => {
   setItem('profile', JSON.stringify(profile))
@@ -17,18 +17,12 @@ export const logout = () => {
   }
 }
 
-export function setAuthError(message) {
-  return {
-    type: SET_AUTH_ERROR,
-    payload: message,
-  }
-}
 
 export function setLogin(data, history, setError, setIsLoading) {
   return async dispatch => {
     const res = await signIn(data)
     if (res.status === 200) {
-      dispatch(auth(res.data))
+      dispatch(auth(res.data.data))
       setError('')
       setIsLoading(false)
       history.push('/')
@@ -39,13 +33,17 @@ export function setLogin(data, history, setError, setIsLoading) {
   }
 }
 
-// export function setRegistration(data) {
-//   return async dispatch => {
-//     const res = await registration(data)
-//     if (res.status === 200) {
-//       dispatch(setLogin(data))
-//     } else {
-//       dispatch(setAuthError(authResponseMapping(res.data)))
-//     }
-//   }
-// }
+export function setRegistration(data, history, setError, setIsLoading) {
+  return async dispatch => {
+    const res = await signUp(data)
+    if (res.status === 201) {
+      dispatch(auth(res.data.data))
+      setError('')
+      setIsLoading(false)
+      history.push('/')
+    } else {
+      setError(res.data.message)
+      setIsLoading(false)
+    }
+  }
+}

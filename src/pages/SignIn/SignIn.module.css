@@ -9,7 +9,7 @@
   justify-content: space-evenly;
   width: 100%;
   padding: 1.5rem;
-  height: 30rem;
+  min-height: 30rem;
   background-color: var(--primary);
 }
 
@@ -25,6 +25,15 @@
   font-size: 1rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
+}
+
+.formInput:is(input:focus) {
+  color: var(--primary);
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.formInput:is(input:focus)::placeholder {
+  color: var(--primary);
 }
 
 .formTitle {
@@ -73,6 +82,8 @@
   word-wrap: break-word;
   padding: 0.5rem;
   color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.4);
+
   font-weight: 500;
   cursor: default;
   user-select: none;
@@ -106,4 +117,8 @@
 
 .alert {
   color: var(--danger);
+}
+
+.label:is(label) {
+  color: rgba(255, 255, 255, 0.8);
 }
