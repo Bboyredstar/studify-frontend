@@ -2,7 +2,6 @@ import { AUTH, SET_LOGOUT } from '../types'
 
 const initialState = {
   profile: null,
-  authError: '',
 }
 
 const reducer = (state = initialState, action) => {

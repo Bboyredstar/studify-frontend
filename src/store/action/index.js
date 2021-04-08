@@ -1,6 +1,1 @@
-
-export {
-  auth,
-  logout,
-  setLogin
-} from './auth'
+export { auth, logout, setLogin } from './auth'

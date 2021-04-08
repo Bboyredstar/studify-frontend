@@ -19,7 +19,7 @@
   --info: #1f9bcf;
   --warning: #f0ad4e;
   --danger: #d9534f;
-  --light: #fff;
+  --light: #fcf9f9;
   --dark: #3f4041;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
@@ -3034,11 +3034,12 @@ input[type='submit'].btn-block {
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1000;
   display: none;
   float: left;
-  min-width: 10rem;
+  min-width: 15rem;
   width: 100%;
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
@@ -6047,7 +6048,7 @@ button.bg-danger:hover {
   background-color: #c9302c !important;
 }
 .bg-light {
-  background-color: #fff !important;
+  background-color: var(--light) !important;
 }
 a.bg-light:focus,
 a.bg-light:hover,
@@ -6150,7 +6151,7 @@ button.bg-dark:hover {
   border-bottom-left-radius: 0.25rem !important;
 }
 .rounded-lg {
-  border-radius: 0.3rem !important;
+  border-radius: 1rem !important;
 }
 .rounded-circle {
   border-radius: 50% !important;

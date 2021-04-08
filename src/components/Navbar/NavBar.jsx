@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react'
 import { NavLink, useHistory, useLocation } from 'react-router-dom'
 import { Navbar, Container, Row, NavDropdown } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
+import { ProfileImage } from '../../components'
+import { getItem } from '../../utils/localStorage'
 import { logout } from '../../store/action'
 import styles from './NavBar.module.css'
 
 export const NavBar = () => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
+  const [user, setUser] = useState(null)
   const dispatch = useDispatch()
   const history = useHistory()
   const location = useLocation()
   useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem('profile')))
+    setUser(getItem('profile'))
   }, [location])
 
   const logoutHandler = e => {
@@ -34,18 +36,32 @@ export const NavBar = () => {
                 id='basic-nav-dropdown'
                 className={styles.dropdown}
               >
+                <ProfileImage />
+                <NavDropdown.Item className={styles.itemLink}>
+                  Профиль
+                </NavDropdown.Item>
+                {user?.role === 'user' ? (
+                  <>
+                    <NavDropdown.Item className={styles.itemLink}>
+                      Стать преподавателем
+                    </NavDropdown.Item>
+                  </>
+                ) : null}
+                {user?.role === 'teacher' ? (
+                  <>
+                    <NavDropdown.Item className={styles.itemLink}>
+                      Панель преподавателя
+                    </NavDropdown.Item>
+                  </>
+                ) : null}
                 <NavDropdown.Item
-                  href='#action/3.1'
-                  className={styles.link}
+                  className={styles.itemLink}
                 ></NavDropdown.Item>
-                <NavDropdown.Item href='#action/3.2' className={styles.link}>
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href='#action/3.3' className={styles.link}>
-                  Something
-                </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item onClick={e => logoutHandler(e)}>
+                <NavDropdown.Item
+                  onClick={e => logoutHandler(e)}
+                  className={styles.itemLink}
+                >
                   Выйти
                 </NavDropdown.Item>
               </NavDropdown>

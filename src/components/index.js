@@ -1,3 +1,5 @@
 export * from './Navbar'
 export * from './AssideImage'
 export * from './AuthRoute'
+export * from './CourseCard'
+export * from './ProfileImage'

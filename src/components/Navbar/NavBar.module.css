@@ -26,23 +26,35 @@
   width: max-content;
   justify-content: flex-end;
   align-items: center;
-  width: 80%;
+  padding: 0 1rem;
 }
 
-.link {
+.link:is(a),
+.itemLink:is(a) {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--white);
   font-size: 1rem;
+  font-weight: 500;
   height: 100%;
-  transition: opacity 0.2s ease;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.link:is(a) {
+  color: var(--light);
+}
+
+.itemLink:is(a) {
+  color: var(--primary);
 }
 
 .link:hover {
-  text-decoration: none;
-  color: var(--white);
   opacity: 0.8;
+}
+
+.itemLink:is(a):hover {
+  background-color: rgba(161, 196, 118, 0.5);
 }
 
 .dropdown:is(div) {
