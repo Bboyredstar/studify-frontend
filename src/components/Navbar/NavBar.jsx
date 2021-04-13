@@ -37,9 +37,9 @@ export const NavBar = () => {
                 className={styles.dropdown}
               >
                 <ProfileImage />
-                <NavDropdown.Item className={styles.itemLink}>
+                <NavLink to='/edit-profile' className={styles.itemLink}>
                   Профиль
-                </NavDropdown.Item>
+                </NavLink>
                 {user?.role === 'user' ? (
                   <>
                     <NavDropdown.Item className={styles.itemLink}>

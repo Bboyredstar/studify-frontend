@@ -7,7 +7,7 @@ export const API = axios.create({
   baseURL: 'http://localhost:3000',
 })
 
-let _retry = false
+
 
 API.interceptors.request.use(
   config => {
@@ -29,20 +29,21 @@ API.interceptors.request.use(
 )
 
 const refreshLogic = async failedRequest => {
-  console.log('asdsad')
-  if (!_retry) {
-    _retry = true
+  if (failedRequest.response.data.message !== 'Token expired') {
     const tokens = await refresh()
-    console.log(tokens)
+    console.dir(tokens)
     if (tokens) {
       setItem('tokens', tokens)
       failedRequest.headers['Authorization'] = 'Bearer ' + tokens.access_token
     }
     return Promise.resolve()
-  } else {
+  }
+  if (failedRequest.response.data.message === 'Token expired') {
     removeItem('tokens')
+    removeItem('profile')
     return Promise.reject()
   }
+  return Promise.reject()
 }
 
 createAuthRefreshInterceptor(API, refreshLogic)

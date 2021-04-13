@@ -13,14 +13,12 @@ export const auth = data => {
 
 export const checkProfile = () => {
   const profile = getItem('profile')
-  if (profile) {
-    return {
-      type: AUTH,
-      payload: profile
-    }
+  return {
+    type: AUTH,
+    payload: profile
   }
-
 }
+
 
 export const logout = () => {
   removeItem('profile')

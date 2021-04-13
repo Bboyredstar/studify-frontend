@@ -1,38 +1,71 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import cn from 'classnames'
 import { CardDeck } from 'react-bootstrap'
-import { CourseCard } from '../../components'
-import image from '../../assets/SignUp.jpg'
-import { updateUser } from '../../api/user'
+import { CourseCard, Section } from '../../components'
+import { CardSceleton } from '../../sceletons'
+
+import styles from './Main.module.css'
 
 export const Main = () => {
-  const update = async () => {
-    const response = await updateUser()
-    console.log(response)
-  }
+  const [isLoading, setIsLoading] = useState(true)
+  useEffect(() => {
+    setIsLoading(false)
+  }, [])
   return (
-    <CardDeck>
-      <CourseCard
-        id={'123'}
-        author={'Test Test'}
-        avgRating={4.5}
-        courseName={'New Course'}
-        image={image}
-      />
-      <CourseCard
-        id={'123'}
-        author={'Test Test'}
-        avgRating={4.5}
-        courseName={'New Course'}
-        image={image}
-      />
-      <CourseCard
-        id={'123'}
-        author={'Test Test'}
-        avgRating={4.5}
-        courseName={'New Course'}
-        image={image}
-      />
-      <button onClick={update}>test</button>
-    </CardDeck>
+    <div className={cn('container', styles.wrapper)}>
+      {isLoading && (
+        <Section title={''}>
+          {Array(5)
+            .fill()
+            .map((_, index) => (
+              <CardSceleton key={index} />
+            ))}
+        </Section>
+      )}
+      {!isLoading && (
+        <Section title={'Demo'}>
+          <CourseCard
+            id={'123'}
+            author={'Test Test'}
+            avgRating={4.5}
+            courseName={'New Course'}
+            image={''}
+            border={'none'}
+          />
+          <CourseCard
+            id={'123'}
+            author={'Test Test'}
+            avgRating={4.5}
+            courseName={'New Course'}
+            image={''}
+            border={'none'}
+          />
+          <CourseCard
+            id={'123'}
+            author={'Test Test'}
+            avgRating={4.9}
+            courseName={'New Course'}
+            image={''}
+            border={'none'}
+          />
+          <CourseCard
+            id={'123'}
+            author={'Test Test'}
+            avgRating={4.9}
+            courseName={'New Course'}
+            image={''}
+            border={'none'}
+          />
+          <CourseCard
+            id={'123'}
+            author={'Test Test'}
+            avgRating={4.9}
+            courseName={'New Course'}
+            image={''}
+            border={'none'}
+          />
+        </Section>
+      )}
+    </div>
   )
 }

@@ -1,0 +1,16 @@
+.cardWrapper {
+  composes: cardWrapper from '../../components/CourseCard/CourseCard.module.css';
+  border: none !important;
+}
+.cardFooter {
+  composes: cardFooter from '../../components/CourseCard/CourseCard.module.css';
+}
+
+.roundedTop {
+  composes: roundedTop from '../../components/CourseCard/CourseCard.module.css';
+}
+
+.image {
+  composes: image from '../../components/CourseCard/CourseCard.module.css';
+  transform: translateY(-5px);
+}

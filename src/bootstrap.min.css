@@ -32,6 +32,20 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
     'Liberation Mono', 'Courier New', monospace;
 }
+
+*::-webkit-scrollbar {
+  height: 0.5rem;
+  width: 0.5rem;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: var(--light);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+}
+
 *,
 ::after,
 ::before {
@@ -6110,6 +6124,11 @@ button.bg-dark:hover {
 .border-success {
   border-color: #4bbf73 !important;
 }
+
+.border-none {
+  border: none !important;
+}
+
 .border-info {
   border-color: #1f9bcf !important;
 }
@@ -7262,6 +7281,7 @@ button.bg-dark:hover {
 }
 .min-vh-100 {
   min-height: 100vh !important;
+  height: 1px;
 }
 .vw-100 {
   width: 100vw !important;
