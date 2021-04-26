@@ -23,26 +23,26 @@
 
 .square:first-child {
   transform: translateX(2.5rem) translateY(2rem);
-  /* animation: first-square;
-  animation-duration: 2s;
-  animation-iteration-count: infinite; */
+  animation: first-square;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
 }
 
 .square:nth-child(2) {
-  /* animation: second-square;
-  animation-duration: 2s;
-  animation-iteration-count: infinite; */
+  animation: second-square;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
 }
 
 .square:nth-child(3) {
-  /* animation: third-square;
-  animation-duration: 2s;
-  animation-iteration-count: infinite; */
+  animation: third-square;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
 }
 .square:last-child {
   transform: translateX(-2.5rem) translateY(2rem);
   animation: fourth-square;
-  animation-duration: 2s;
+  animation-duration: 3s;
   animation-iteration-count: infinite;
 }
 
@@ -102,18 +102,18 @@
 
 @keyframes fourth-square {
   0% {
-    transform: scale(1) translateX(0rem) translateY(2rem);
+    transform: scale(1) translateX(-2.5rem) translateY(2rem);
   }
   25% {
-    transform: scale(1.1) translateX(0rem) translateY(2rem);
+    transform: scale(1.1) translateX(-5rem) translateY(2rem);
   }
   50% {
-    transform: scale(1) translateX(-2.5rem) translateY(2rem);
+    transform: scale(1) translateX(-5rem) translateY(0rem);
   }
   75% {
     transform: scale(1.1) translateX(-2.5rem) translateY(0rem);
   }
   100% {
-    transform: scale(1) translateX(0) translateY(0);
+    transform: scale(1) translateX(-2.5rem) translateY(2rem);
   }
 }

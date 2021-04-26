@@ -1,0 +1,75 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.form {
+  composes: form from '../SignIn/SignIn.module.css';
+}
+
+.formTitle {
+  composes: formTitle from '../SignIn/SignIn.module.css';
+}
+
+.formLabel {
+  color: var(--primary);
+  font-weight: 400;
+}
+
+.formInput:is(input, select, textarea) {
+  border: 0.12rem solid rgba(0, 0, 0, 0.8);
+  color: var(--primary);
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  cursor: default;
+}
+
+.title {
+  composes: title from '../ProfilePage/ProfilePage.module.css';
+}
+
+.tabs {
+  composes: tabs from '../ProfilePage/ProfilePage.module.css';
+}
+
+.alert {
+  composes: alert from '../SignIn/SignIn.module.css';
+}
+
+.counter {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.2rem 0.5rem;
+  border-color: var(--primary);
+  background-color: var(--light);
+}
+
+.profileImg {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.col {
+  padding: 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 20rem;
+}
+
+.inputFile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  min-width: 15rem;
+  margin: 1rem auto;
+}

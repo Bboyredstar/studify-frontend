@@ -15,10 +15,9 @@ export const checkProfile = () => {
   const profile = getItem('profile')
   return {
     type: AUTH,
-    payload: profile
+    payload: profile,
   }
 }
-
 
 export const logout = () => {
   removeItem('profile')

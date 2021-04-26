@@ -21,7 +21,7 @@
 
 .formInput:is(input) {
   border: 0.12rem solid rgba(255, 255, 255, 0.8);
-  color: white;
+  color: var(--light);
   font-size: 1rem;
   font-weight: 500;
   margin-bottom: 0.5rem;

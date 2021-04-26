@@ -54,6 +54,7 @@
 html {
   font-family: sans-serif;
   line-height: 1.15;
+  font-size: calc(14px + (18 - 14) * ((100vw - 320px) / (2800 - 320)));
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
 }
@@ -74,7 +75,6 @@ body {
   font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol';
-  font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.5;
   color: #55595c;
@@ -3922,9 +3922,9 @@ input[type='submit'].btn-block {
 }
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
-  color: #55595c;
+  color: var(--primary);
   background-color: #fff;
-  border-color: #eceeef #eceeef #fff;
+  border-color: var(--success) var(--success) #fff;
 }
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
@@ -6122,7 +6122,7 @@ button.bg-dark:hover {
   border-color: #fff !important;
 }
 .border-success {
-  border-color: #4bbf73 !important;
+  border-color: var(--success) !important;
 }
 
 .border-none {

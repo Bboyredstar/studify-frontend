@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import cn from 'classnames'
-import { CardDeck } from 'react-bootstrap'
 import { CourseCard, Section } from '../../components'
 import { CardSceleton } from '../../sceletons'
 

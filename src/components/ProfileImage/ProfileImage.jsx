@@ -1,24 +1,27 @@
 import React from 'react'
-import styles from './ProfileImage.module.css'
+import PropTypes from 'prop-types'
 import cn from 'classnames'
-import { useSelector } from 'react-redux'
 import { getInitials } from '../../utils/getInitials'
+import styles from './ProfileImage.module.css'
 
-export const ProfileImage = () => {
-  const { profile } = useSelector(state => state.auth)
+export const ProfileImage = ({ profile, size, rounded, className }) => {
   return (
     <>
       {profile ? (
-        <div className={styles.wrapper}>
+        <div className={cn(styles.wrapper, className)}>
           {profile.image ? (
             <img
               src={profile.image}
               alt={profile.name}
-              className={cn(styles.container, styles.image, 'rounded-circle')}
+              className={cn(styles.container, styles[size], styles.image, {
+                'rounded-circle': rounded,
+              })}
             />
           ) : (
             <span
-              className={cn(styles.container, styles.tag, 'rounded-circle')}
+              className={cn(styles.container, styles[size], styles.tag, {
+                'rounded-circle': rounded,
+              })}
             >
               {getInitials(profile.fname, profile.lname)}
             </span>
@@ -27,4 +30,11 @@ export const ProfileImage = () => {
       ) : null}
     </>
   )
+}
+
+ProfileImage.propTypes = {
+  profile: PropTypes.object,
+  rounded: PropTypes.bool,
+  size: PropTypes.string,
+  className: PropTypes.string,
 }

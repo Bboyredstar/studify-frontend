@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { checkProfile } from './store/action/auth'
 import { Route } from 'react-router-dom'
-import { Spinner } from 'react-bootstrap'
 import { NavBar, AuthRoute, PrivateRoute, Preloader } from './components'
-import { SignIn, SignUp, Main, ProfileEditPage } from './pages'
+import { SignIn, SignUp, Main, ProfilePage, ProfileEditPage } from './pages'
 
 function App() {
-
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
@@ -15,12 +13,10 @@ function App() {
     setIsLoading(false)
   }, [dispatch])
 
-
-
   return (
     <div className={'min-vh-100'}>
-      { isLoading && < Preloader />}
-      {!isLoading &&
+      {isLoading && <Preloader />}
+      {!isLoading && (
         <>
           <NavBar />
           <Route exact path='/'>
@@ -32,10 +28,14 @@ function App() {
           <AuthRoute path='/api/register'>
             <SignUp />
           </AuthRoute>
+          <PrivateRoute path='/profile'>
+            <ProfilePage />
+          </PrivateRoute>
           <PrivateRoute path='/edit-profile'>
             <ProfileEditPage />
           </PrivateRoute>
-        </>}
+        </>
+      )}
     </div>
   )
 }

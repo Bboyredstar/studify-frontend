@@ -36,8 +36,8 @@ export const NavBar = () => {
                 id='basic-nav-dropdown'
                 className={styles.dropdown}
               >
-                <ProfileImage />
-                <NavLink to='/edit-profile' className={styles.itemLink}>
+                <ProfileImage profile={user} size={'s'} rounded={true} />
+                <NavLink to='/profile' className={styles.itemLink}>
                   Профиль
                 </NavLink>
                 {user?.role === 'user' ? (

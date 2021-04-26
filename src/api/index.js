@@ -7,8 +7,6 @@ export const API = axios.create({
   baseURL: 'http://localhost:3000',
 })
 
-
-
 API.interceptors.request.use(
   config => {
     config.headers = {
